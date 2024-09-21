@@ -150,8 +150,9 @@ static void VideoReceiveThreadProc(void* context) {
                 waitingForVideoMs += UDP_RECV_POLL_TIMEOUT_MS;
                 if (waitingForVideoMs >= FIRST_FRAME_TIMEOUT_SEC * 1000) {
                     Limelog("Terminating connection due to lack of video traffic\n");
-                    ListenerCallbacks.connectionTerminated(ML_ERROR_NO_VIDEO_TRAFFIC);
-                    break;
+                    Limelog("No-no-no! Not terminating, we allow no video now.\n");
+//                    ListenerCallbacks.connectionTerminated(ML_ERROR_NO_VIDEO_TRAFFIC);
+//                    break;
                 }
             }
             
@@ -172,8 +173,9 @@ static void VideoReceiveThreadProc(void* context) {
 
             if (now - firstDataTimeMs >= FIRST_FRAME_TIMEOUT_SEC * 1000) {
                 Limelog("Terminating connection due to lack of a successful video frame\n");
-                ListenerCallbacks.connectionTerminated(ML_ERROR_NO_VIDEO_FRAME);
-                break;
+                Limelog("No-no-no! Not terminating, we allow no video now.\n");
+                // ListenerCallbacks.connectionTerminated(ML_ERROR_NO_VIDEO_FRAME);
+                // break;
             }
         }
 #endif
